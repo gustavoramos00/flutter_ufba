@@ -51,7 +51,16 @@ class Calculadora extends ConsumerWidget {
                 historico.add(imc);
 
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Resultado(imc: imc)));
+                    // MaterialPageRoute(builder: (context) => Resultado(imc: imc)));
+                    MaterialPageRoute(builder: (context){
+                      if(peso!/(altura! * altura!) < 18){
+                        return Resultado(imc: imc);
+                      }else if(peso!/(altura! * altura!) >= 18 && peso!/(altura! * altura!) <= 24 ){
+                        return Resultado1(imc: imc);
+                      }else{
+                        return Resultado2(imc: imc);
+                      }
+                    }));
               }
             },
             child: const Text('Calcular'),
