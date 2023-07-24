@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:imc/imc.dart';
+import 'package:imc/main.dart';
 import 'package:imc/resultado-imc.dart';
 
-class Calculadora extends StatefulWidget {
-  const Calculadora({
+
+
+class Calculadora extends ConsumerWidget {
+  Calculadora({
     super.key,
   });
 
-  @override
-  State<Calculadora> createState() => _CalculadoraState();
-}
-
-class _CalculadoraState extends State<Calculadora> {
   double? peso;
   double? altura;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final List<IMC> historico = ref.watch(imcProvider);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -47,6 +47,9 @@ class _CalculadoraState extends State<Calculadora> {
             onPressed: () {
               if (peso != null && altura != null) {
                 final imc = IMC(peso!, altura!, 'M', DateTime.now());
+                final historico = ref.read(imcProvider.notifier).state;
+                historico.add(imc);
+
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => Resultado(imc: imc)));
               }

@@ -16,13 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const titulo = 'Calcule seu IMC';
-    return MaterialApp(
-      title: titulo,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ProviderScope(
+      child: MaterialApp(
+        title: titulo,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(title: titulo),
       ),
-      home: const MyHomePage(title: titulo),
     );
   }
 }
@@ -36,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 
-final imcProvider = StateProvider((ref) => List<IMC>.empty());
+final imcProvider = StateProvider((ref) => List<IMC>.empty(growable: true));
 
 class _MyHomePageState extends State<MyHomePage> {
 
@@ -55,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,          
           title: Text(widget.title),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
             Calculadora(),
             Historico(),
