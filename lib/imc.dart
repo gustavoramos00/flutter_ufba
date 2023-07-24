@@ -33,7 +33,5 @@ class IMC {
     } else {
       return CategoriaImc.obesidadeIII;
     }
-
-    return CategoriaImc.normal;
   }
 }
