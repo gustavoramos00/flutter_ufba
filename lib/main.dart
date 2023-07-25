@@ -37,10 +37,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 List<IMC> listaTeste = [
-  IMC(90, 1.8, 'M', DateTime.now().add(const Duration(days: -5, minutes: 25))),
-  IMC(120, 1.8, 'M',
-      DateTime.now().add(const Duration(days: -10, minutes: 30))),
-  IMC(100, 1.8, 'M', DateTime.now().add(const Duration(days: -20, minutes: 42)))
+  IMC(90, 1.8, DateTime.now().add(const Duration(days: -5, minutes: 25))),
+  IMC(120, 1.8, DateTime.now().add(const Duration(days: -10, minutes: 30))),
+  IMC(100, 1.8, DateTime.now().add(const Duration(days: -20, minutes: 42)))
 ];
 final imcProvider =
     StateProvider((ref) => listaTeste); //List<IMC>.empty(growable: true));
