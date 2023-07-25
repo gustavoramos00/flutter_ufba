@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:imc/main.dart';
+import 'package:imc/resultado-imc.dart';
 
 class Historico extends ConsumerWidget {
   const Historico({super.key});
@@ -10,25 +11,34 @@ class Historico extends ConsumerWidget {
     final historico = ref.watch(imcProvider);
 
     return Scrollbar(
-      child: ListView(
-        padding: const EdgeInsets.all(20.0),
-        children: [
-          for (int i = 0; i < historico.length; i++)
-            ListTile(
-              leading: ExcludeSemantics(
-                child: CircleAvatar(
-                  backgroundColor:
-                      historico.elementAt(i).recupearCategoria().cor,
-                  child:
-                      Text(historico.elementAt(i).recupearCategoria().codigo),
-                ),
+        child: ListView.builder(
+      itemCount: historico.length,
+      itemBuilder: (BuildContext context, int index) {
+        final imc = historico.elementAt(index);
+
+        return InkWell(
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Resultado(imc: imc)));
+          },
+          child: ListTile(
+            leading: ExcludeSemantics(
+              child: CircleAvatar(
+                backgroundColor: imc.recupearCategoria().cor,
+                child: Text(imc.recupearCategoria().codigo),
               ),
-              title: Text(
-                  'IMC: ${historico.elementAt(i).calcularResultado().toStringAsFixed(2)}'),
-              subtitle: Text('${historico.elementAt(i).getDataFormatada()}'),
             ),
-        ],
-      ),
-    );
+            title: Text('IMC: ${imc.calcularResultado().toStringAsFixed(2)}'),
+            subtitle: Text(imc.getDataFormatada()),
+            // trailing: InkWell(
+            //   onTap: () {
+            //     ref.read(imcProvider.notifier).state.remove(imc);
+            //   },
+            //   child: const Icon(Icons.delete),
+            // ),
+          ),
+        );
+      },
+    ));
   }
 }
