@@ -53,6 +53,15 @@ class _ResultadoState extends State<Resultado> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Resultado'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back), // Ícone de seta para a esquerda
+          onPressed: () {
+            Navigator.pop(context); // Volta para a tela anterior
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
