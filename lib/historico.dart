@@ -9,6 +9,14 @@ class Historico extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final historico = ref.watch(historicoImcProvider);
+    if (historico.isEmpty) {
+      return Center(
+        child: Text(
+          'Ops, nenhum IMC no histórico ainda',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+      );
+    }
 
     return Scrollbar(
         child: ListView.builder(

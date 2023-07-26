@@ -9,7 +9,7 @@ class IMC {
   IMC(this.peso, this.altura, this.data);
 
   String getDataFormatada() {
-    return DateFormat('dd/MM/yyyy, HH:mm').format(data);
+    return DateFormat('dd/MM/yyyy HH:mm').format(data);
   }
 
   double calcularResultado() {

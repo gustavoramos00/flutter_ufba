@@ -19,7 +19,6 @@ class Calculadora extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final List<IMC> historico = ref.watch(imcProvider);
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),

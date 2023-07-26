@@ -36,13 +36,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-List<IMC> listaTeste = [
-  IMC(90, 1.8, DateTime.now().add(const Duration(days: -5, minutes: 25))),
-  IMC(120, 1.8, DateTime.now().add(const Duration(days: -10, minutes: 30))),
-  IMC(100, 1.8, DateTime.now().add(const Duration(days: -20, minutes: 42)))
-];
 final historicoImcProvider =
-    StateProvider((ref) => listaTeste); //List<IMC>.empty(growable: true));
+    StateProvider((ref) => List<IMC>.empty(growable: true));
 
 final imcSelecionadoProvider =
     StateProvider<IMC>((ref) => IMC(0, 0, DateTime.now()));

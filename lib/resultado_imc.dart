@@ -4,6 +4,7 @@ import 'package:imc/dieta.dart';
 import 'package:imc/dietas.dart';
 import 'package:imc/imc.dart';
 import 'package:imc/main.dart';
+import 'package:intl/intl.dart';
 
 class Resultado extends ConsumerWidget {
   const Resultado({super.key});
@@ -12,19 +13,13 @@ class Resultado extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final IMC imc = ref.watch(imcSelecionadoProvider);
     final List<Dieta> dietas = ref.watch(dietasProvider);
-
+    final numberFormat = NumberFormat("###.0#", "pt_BR");
     Dieta dietaApropriada = definirDietaApropriada(imc, dietas);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Resultado'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back), // Ícone de seta para a esquerda
-          onPressed: () {
-            Navigator.pop(context); // Volta para a tela anterior
-          },
-        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -34,21 +29,44 @@ class Resultado extends ConsumerWidget {
               child: Card(
                 color: imc.recupearCategoria().cor,
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Text(imc.recupearCategoria().nome),
+                  padding: const EdgeInsets.all(40),
+                  child: Text(
+                    imc.recupearCategoria().nome,
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
                 ),
               ),
             ),
             const SizedBox(height: 10),
             Card(
-              child: Column(
-                children: [
-                  Text('IMC : ${imc.calcularResultado().toStringAsFixed(2)}'),
-                  Text('Peso: ${imc.peso.toStringAsFixed(2)}Kg'),
-                  Text('Altura: ${imc.altura.toStringAsFixed(2)}m'),
-                  Text('Data: ${imc.getDataFormatada()}'),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'IMC : ${numberFormat.format(imc.calcularResultado())}',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    Text(
+                      'Peso: ${numberFormat.format(imc.peso)} Kg',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    Text(
+                      'Altura: ${numberFormat.format(imc.altura)} m',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    Text(
+                      'Data: ${imc.getDataFormatada()}',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  ],
+                ),
               ),
+            ),
+            const SizedBox(height: 30),
+            Text(
+              'Dieta sugerida',
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 10),
             DietaExpansionPanelList(dieta: dietaApropriada),
