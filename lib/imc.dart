@@ -1,4 +1,4 @@
-import 'package:imc/categoria-imc-enum.dart';
+import 'package:imc/categoria_imc_enum.dart';
 import 'package:intl/intl.dart';
 
 class IMC {

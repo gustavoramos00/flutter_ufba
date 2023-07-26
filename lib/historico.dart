@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:imc/main.dart';
-import 'package:imc/resultado-imc.dart';
+import 'package:imc/resultado_imc.dart';
 
 class Historico extends ConsumerWidget {
   const Historico({super.key});
