@@ -54,17 +54,13 @@ class Calculadora extends ConsumerWidget {
               onPressed: () {
                 if (peso != null && altura != null) {
                   final imc = IMC(peso!, altura!, DateTime.now());
-                  final historico = ref.read(imcProvider.notifier).state;
+                  ref.read(imcSelecionadoProvider.notifier).state = imc;
+
+                  final historico =
+                      ref.read(historicoImcProvider.notifier).state;
                   historico.add(imc);
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    if (peso! / (altura! * altura!) < 18) {
-                      return Resultado(imc: imc);
-                    } else if (peso! / (altura! * altura!) >= 18 &&
-                        peso! / (altura! * altura!) <= 24) {
-                      return Resultado1(imc: imc);
-                    } else {
-                      return Resultado2(imc: imc);
-                    }
+                    return const Resultado();
                   }));
                 }
               },

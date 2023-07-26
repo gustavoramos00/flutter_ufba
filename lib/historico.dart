@@ -8,7 +8,7 @@ class Historico extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final historico = ref.watch(imcProvider);
+    final historico = ref.watch(historicoImcProvider);
 
     return Scrollbar(
         child: ListView.builder(
@@ -18,8 +18,10 @@ class Historico extends ConsumerWidget {
 
         return InkWell(
           onTap: () {
+            ref.read(imcSelecionadoProvider.notifier).state = imc;
+
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Resultado(imc: imc)));
+                MaterialPageRoute(builder: (context) => const Resultado()));
           },
           child: ListTile(
             leading: ExcludeSemantics(
@@ -30,12 +32,6 @@ class Historico extends ConsumerWidget {
             ),
             title: Text('IMC: ${imc.calcularResultado().toStringAsFixed(2)}'),
             subtitle: Text(imc.getDataFormatada()),
-            // trailing: InkWell(
-            //   onTap: () {
-            //     ref.read(imcProvider.notifier).state.remove(imc);
-            //   },
-            //   child: const Icon(Icons.delete),
-            // ),
           ),
         );
       },

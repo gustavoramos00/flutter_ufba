@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
+class Dieta {
+  final String cafeDaManha;
+  final String lancheManha;
+  final String almoco;
+  final String lancheTarde;
+  final String cafeDaNoite;
+  final String janta;
 
-class dieta {
-  dieta({
-    required this.id,
-    required this.title,
-    required this.description,
-    this.isExpanded = false,
-  });
-
-  int id;
-  String title;
-  String description;
-  bool isExpanded;
-
+  Dieta(
+      {required this.cafeDaManha,
+      required this.lancheManha,
+      required this.almoco,
+      required this.lancheTarde,
+      required this.cafeDaNoite,
+      required this.janta});
 }
