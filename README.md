@@ -1,16 +1,12 @@
-# imc
+# App criado para realizar o calculo de imc do usuário, sugerir dietas a partir do resultado do calculo e salvar um histórico de utilizações
 
-A new Flutter project.
+Para executar o projeto, rode o comando flutter pub get para baixar as dependencias e depois flutter run
 
-## Getting Started
+A utilização é bem intuitiva, forneça sua altuma em metros (Ex: 1,75) e seu peso em kg e clique no botão calcular
 
-This project is a starting point for a Flutter application.
+##Participantes do grupo
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Gustavo Ramos Almeida
+Kauan Guilherme
+Rafael Augusto Borges de Oliveira
+Ramon Araújo
