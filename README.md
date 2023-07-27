@@ -4,6 +4,12 @@ Para executar o projeto, rode o comando flutter pub get para baixar as dependenc
 
 A utilização é bem intuitiva, forneça sua altuma em metros (Ex: 1,75) e seu peso em kg e clique no botão calcular
 
+# Instruções
+
+Para baixar as dependências `flutter pub get`
+
+Para executar `flutter run`
+
 # Participantes do grupo
 
 Gustavo Ramos Almeida
